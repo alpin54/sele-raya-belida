@@ -1,6 +1,6 @@
 {
-  "short_name": "Bilik Media",
-  "name": "Bilik Media",
+  "short_name": "Sele Raya Belida",
+  "name": "Sele Raya Belida",
   "start_url": "/",
   "icons": [
     {
@@ -40,7 +40,7 @@
       "density": "4.0"
     }
   ],
-  "background_color": "#004e92",
-  "theme_color": "#004e92",
+  "background_color": "#fff4ed",
+  "theme_color": "#fff4ed",
   "display": "standalone"
 }
