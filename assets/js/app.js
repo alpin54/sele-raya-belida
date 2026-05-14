@@ -15271,7 +15271,7 @@ var App = function () {
 // ---  run main js
 App.init();
 
-},{"../../components":37,"../../templates":39,"./utilities":12}],6:[function(require,module,exports){
+},{"../../components":38,"../../templates":40,"./utilities":12}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16558,6 +16558,77 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 /* ------------------------------------------------------------------------------
+@name: CsrTabs
+@description: CsrTabs
+--------------------------------------------------------------------------------- */
+
+var CsrTabs = function () {
+  // handleTabs
+  var handleTabs = function handleTabs() {
+    var $tabs = $('.csr-tabs');
+    if (!$tabs.length) return;
+    $tabs.each(function () {
+      var $tab = $(this);
+      var $listItems = $tab.find('.csr-tabs__list-item');
+      var $panes = $tab.find('.csr-tabs__pane');
+      var $contentInner = $tab.find('.csr-tabs__content');
+      var activeIdx = 0;
+
+      // Set first tab and pane active on load
+      $listItems.removeClass('csr-tabs__list-item--active');
+      $listItems.eq(0).addClass('csr-tabs__list-item--active');
+      $panes.removeClass('is-active is-leave');
+      $panes.eq(0).addClass('is-active');
+
+      // Set content-inner height to tallest pane
+      function setMaxPaneHeight() {
+        var maxHeight = 0;
+        $panes.each(function () {
+          var h = $(this).outerHeight();
+          if (h > maxHeight) maxHeight = h;
+        });
+        $contentInner.css('height', maxHeight + 'px');
+      }
+      setMaxPaneHeight();
+      $(window).on('resize', setMaxPaneHeight);
+      $listItems.on('click', function () {
+        var idx = $(this).data('tab');
+        if (idx === activeIdx) return;
+
+        // Tab nav
+        $listItems.removeClass('csr-tabs__list-item--active');
+        $(this).addClass('csr-tabs__list-item--active');
+
+        // Tab content with smooth effect
+        $panes.removeClass('is-active is-leave');
+        $panes.eq(activeIdx).addClass('is-leave');
+        setTimeout(function () {
+          $panes.eq(activeIdx).removeClass('is-leave');
+          $panes.eq(idx).addClass('is-active');
+        }, 200);
+        $panes.eq(idx).addClass('is-active');
+        activeIdx = idx;
+      });
+    });
+  };
+
+  // - init
+  var init = function init() {};
+  handleTabs();
+  return {
+    init: init
+  };
+}();
+var _default = exports["default"] = CsrTabs;
+
+},{}],25:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+/* ------------------------------------------------------------------------------
 @name: CommitmentOverview
 @description: CommitmentOverview with Progress Indicator and Current Slide Number
 --------------------------------------------------------------------------------- */
@@ -16609,7 +16680,7 @@ var CommitmentOverview = function () {
 }();
 var _default = exports["default"] = CommitmentOverview;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16675,7 +16746,7 @@ var Tabs = function () {
 }();
 var _default = exports["default"] = Tabs;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16879,7 +16950,7 @@ var ContactUsForm = function () {
 }();
 var _default = exports["default"] = ContactUsForm;
 
-},{"../../../_core/scripts/utilities":12}],27:[function(require,module,exports){
+},{"../../../_core/scripts/utilities":12}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16915,7 +16986,7 @@ var Footer = function () {
 }();
 var _default = exports["default"] = Footer;
 
-},{"../../_core/scripts/utilities/WindowResize":10}],28:[function(require,module,exports){
+},{"../../_core/scripts/utilities/WindowResize":10}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17100,7 +17171,7 @@ var Header = function () {
 }();
 var _default = exports["default"] = Header;
 
-},{"../../_core/scripts/utilities/Scrolllable":7,"../../_core/scripts/utilities/WindowResize":10,"../../_core/scripts/utilities/WindowScroll":11}],29:[function(require,module,exports){
+},{"../../_core/scripts/utilities/Scrolllable":7,"../../_core/scripts/utilities/WindowResize":10,"../../_core/scripts/utilities/WindowScroll":11}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17257,7 +17328,7 @@ var HeroBanner = function () {
 }();
 var _default = exports["default"] = HeroBanner;
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17369,7 +17440,7 @@ var InvestorSection = function () {
 }();
 var _default = exports["default"] = InvestorSection;
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17475,7 +17546,7 @@ var OperationsOperasional = function () {
 }();
 var _default = exports["default"] = OperationsOperasional;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17664,7 +17735,7 @@ var OperationsProduction = function () {
 }();
 var _default = exports["default"] = OperationsProduction;
 
-},{"chart.js/auto":2}],33:[function(require,module,exports){
+},{"chart.js/auto":2}],34:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17762,7 +17833,7 @@ var Tabs = function () {
 }();
 var _default = exports["default"] = Tabs;
 
-},{"../../_core/scripts/utilities/Scrolllable":7,"../../_core/scripts/utilities/WindowResize":10}],34:[function(require,module,exports){
+},{"../../_core/scripts/utilities/Scrolllable":7,"../../_core/scripts/utilities/WindowResize":10}],35:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17826,7 +17897,11 @@ var ContentTransition = function () {
     // -- news detail page,
     '.news-detail__head', '.news-detail__body', '.news-related__head', '.news-related__body',
     // -- awards page
-    '.awards__filter', '.awards-card']);
+    '.awards__filter', '.awards-card',
+    // -- csr page
+    '.csr-detail__head', '.csr-detail__body', '.csr-stb__label', '.csr-stb__title', '.csr-stb__desc', '.csr-tabs__list', '.csr-tabs__content', '.csr-pillars__subtitle', '.csr-pillars__title', '.csr-pillars__desc', '.csr-item',
+    // Banner
+    '.banner__title', '.banner__desc', '.csr-related__head', '.csr-related__body']);
     $.each(contentList, function (idx, el) {
       $(el).addClass('content-transition');
     });
@@ -17896,7 +17971,7 @@ var ContentTransition = function () {
 }();
 var _default = exports["default"] = ContentTransition;
 
-},{"../../../_core/scripts/utilities/WindowResize":10,"../../../_core/scripts/utilities/WindowScroll":11}],35:[function(require,module,exports){
+},{"../../../_core/scripts/utilities/WindowResize":10,"../../../_core/scripts/utilities/WindowScroll":11}],36:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18128,7 +18203,7 @@ var FormControl = function () {
 }();
 var _default = exports["default"] = FormControl;
 
-},{"../../../_core/scripts/utilities":12}],36:[function(require,module,exports){
+},{"../../../_core/scripts/utilities":12}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18285,7 +18360,7 @@ var Modal = function () {
 }();
 var _default = exports["default"] = Modal;
 
-},{"../../../_core/scripts/utilities":12}],37:[function(require,module,exports){
+},{"../../../_core/scripts/utilities":12}],38:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18349,6 +18424,12 @@ Object.defineProperty(exports, "CsrSection", {
   enumerable: true,
   get: function get() {
     return _CsrSection["default"];
+  }
+});
+Object.defineProperty(exports, "CsrTabs", {
+  enumerable: true,
+  get: function get() {
+    return _CsrTabs["default"];
   }
 });
 Object.defineProperty(exports, "EnergyInterest", {
@@ -18438,9 +18519,10 @@ var _SejatiNumber = _interopRequireDefault(require("./Businesses/SejatiNumber"))
 var _ContactUs = _interopRequireDefault(require("./Contact/ContactUs"));
 var _CompanyOrganization = _interopRequireDefault(require("./Company/CompanyOrganization"));
 var _Modal = _interopRequireDefault(require("./_Elements/Modal"));
+var _CsrTabs = _interopRequireDefault(require("./CSR/CsrTabs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"./AboutUs/AboutUsSection":16,"./Businesses/BusinessesBanner":17,"./Businesses/BusinessesKey":18,"./Businesses/BusinessesOverview":19,"./Businesses/BusinessesSection":20,"./Businesses/EnergyInterest":21,"./Businesses/SejatiNumber":22,"./CSR/CsrSection":23,"./Commitment/CommitmentOverview":24,"./Company/CompanyOrganization":25,"./Contact/ContactUs":26,"./Footer":27,"./Header":28,"./HeroBanner":29,"./InvestorRelations/InvestorSection":30,"./Operations/OperationsOperasional":31,"./Operations/OperationsProduction":32,"./Tabs":33,"./_Elements/ContentTransition":34,"./_Elements/FormControl":35,"./_Elements/Modal":36}],38:[function(require,module,exports){
+},{"./AboutUs/AboutUsSection":16,"./Businesses/BusinessesBanner":17,"./Businesses/BusinessesKey":18,"./Businesses/BusinessesOverview":19,"./Businesses/BusinessesSection":20,"./Businesses/EnergyInterest":21,"./Businesses/SejatiNumber":22,"./CSR/CsrSection":23,"./CSR/CsrTabs":24,"./Commitment/CommitmentOverview":25,"./Company/CompanyOrganization":26,"./Contact/ContactUs":27,"./Footer":28,"./Header":29,"./HeroBanner":30,"./InvestorRelations/InvestorSection":31,"./Operations/OperationsOperasional":32,"./Operations/OperationsProduction":33,"./Tabs":34,"./_Elements/ContentTransition":35,"./_Elements/FormControl":36,"./_Elements/Modal":37}],39:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18468,7 +18550,7 @@ var Default = function () {
 }();
 var _default = exports["default"] = Default;
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18483,6 +18565,6 @@ Object.defineProperty(exports, "Default", {
 var _Default = _interopRequireDefault(require("./Default"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"./Default":38}]},{},[5])
+},{"./Default":39}]},{},[5])
 
 //# sourceMappingURL=maps/app.js.map
