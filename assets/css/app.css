@@ -2257,6 +2257,26 @@ b {
   content: "\e9c9";
 }
 
+.sr-scales:before {
+  content: "\e944";
+}
+
+.sr-trophy:before {
+  content: "\e948";
+}
+
+.sr-wallet-border:before {
+  content: "\e949";
+}
+
+.sr-folder-open-border:before {
+  content: "\e945";
+}
+
+.sr-newspaper-clipping:before {
+  content: "\e946";
+}
+
 /* ==========================================================================
    Content Transition
    ========================================================================== */
@@ -2355,8 +2375,11 @@ b {
   background-color: #eb2b30;
 }
 .btn--w {
-  color: #ffffff;
-  border-color: #ffffff;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  padding: 8px 16px;
+  color: #525252;
+  border-color: #9f9f9f;
   background-color: #ffffff;
 }
 .btn--w:hover {
@@ -2705,7 +2728,7 @@ b {
     font-weight: 500;
     padding: 16px 24px;
     margin: 0;
-    border-bottom: solid 1px rgba(23, 23, 23, 0.4);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.04);
   }
 }
 @media only screen and (max-width: 320px) {
@@ -4096,7 +4119,7 @@ b {
   visibility: hidden;
   min-width: 264px;
   background-color: #ffffff;
-  border: 1px solid rgba(23, 23, 23, 0.32);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 12px;
   -webkit-transform: translateY(8px);
      -moz-transform: translateY(8px);
@@ -5964,17 +5987,21 @@ b {
   }
 }
 .company-ms__item__icon__el {
-  font-size: 24px;
-  color: #eb2b30;
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 @media only screen and (max-width: 991.98px) {
   .company-ms__item__icon__el {
-    color: #ffffff;
+    -webkit-filter: brightness(5);
+            filter: brightness(5);
   }
 }
 @media only screen and (max-width: 575.86px) {
   .company-ms__item__icon__el {
-    font-size: 16px;
+    width: 16px;
+    height: 16px;
   }
 }
 .company-ms__item__label {
@@ -9696,7 +9723,7 @@ b {
        -moz-box-flex: 0;
         -ms-flex: 0 0 100%;
             flex: 0 0 100%;
-    margin-bottom: 24px;
+    margin-bottom: 26px;
   }
   .about-integrity__list-item:last-child {
     margin-bottom: 0;
@@ -11492,27 +11519,27 @@ b {
    Tabs
    ========================================================================== */
 .tabs {
-  padding: 56px 0 104px;
-  overflow: hidden;
+  padding: 126px 0 104px;
 }
 @media only screen and (max-width: 1199.98px) {
   .tabs {
-    padding: 48px 0 88px;
+    padding: 96px 0 104px;
   }
 }
 @media only screen and (max-width: 991.98px) {
   .tabs {
-    padding: 40px 0 80px;
+    padding: 64px 0 72px;
+    overflow: hidden;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tabs {
-    padding: 32px 0 72px;
+    padding: 56px 0 64px;
   }
 }
 @media only screen and (max-width: 575.86px) {
   .tabs {
-    padding: 24px 0 56px;
+    padding: 40px 0 56px;
   }
 }
 .tabs__select {
@@ -11591,6 +11618,11 @@ b {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 @media only screen and (max-width: 991.98px) {
   .tabs__tab {
@@ -11612,6 +11644,12 @@ b {
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   width: 320px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 120px;
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start;
 }
 @media only screen and (max-width: 991.98px) {
   .tabs__tab__control {
@@ -11650,6 +11688,9 @@ b {
     -webkit-transition: all 0.3s ease 0.2s;
     -moz-transition: all 0.3s ease 0.2s;
     transition: all 0.3s ease 0.2s;
+    -webkit-align-self: auto;
+        -ms-flex-item-align: auto;
+            align-self: auto;
   }
 }
 .tabs__tab__control__head {
@@ -11674,7 +11715,7 @@ b {
             justify-content: space-between;
     padding: 16px 32px;
     border-radius: 16px 16px 0 0;
-    border-bottom: 1px solid rgba(23, 23, 23, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     background-color: #ffffff;
   }
 }
@@ -11851,6 +11892,11 @@ b {
           flex: 1;
   position: relative;
 }
+@media only screen and (max-width: 991.98px) {
+  .tabs__tab__content {
+    width: 100%;
+  }
+}
 .tabs__tab__pane {
   display: none;
 }
@@ -11919,8 +11965,8 @@ b {
             transform: none;
   }
 }
-.tabs__tab__pane__list {
-  margin-bottom: 32px;
+.tabs__tab__pane__pagination {
+  margin-top: 32px;
 }
 .tabs__tab__pane__item {
   display: -webkit-box;
@@ -12014,6 +12060,13 @@ b {
         -ms-flex-align: start;
             align-items: flex-start;
   }
+}
+.tabs__tab__pane__item__img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 12px;
 }
 .tabs__tab__pane__item__icon {
   display: block;
@@ -17077,7 +17130,6 @@ b {
    Company Organization
    ========================================================================== */
 .company-org {
-  overflow: hidden;
   padding: 104px 0;
 }
 @media only screen and (max-width: 991.98px) {
@@ -17085,14 +17137,19 @@ b {
     padding: 80px 0;
   }
 }
-@media only screen and (max-width: 575.86px) {
+@media only screen and (max-width: 767.98px) {
   .company-org {
     padding: 56px 0;
   }
 }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 575.86px) {
   .company-org {
     padding: 40px 0;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .company-org {
+    padding: 32px 0;
   }
 }
 .company-org__head {
@@ -17106,7 +17163,7 @@ b {
      -moz-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
@@ -17131,6 +17188,11 @@ b {
   -webkit-transition-delay: 200ms;
      -moz-transition-delay: 200ms;
           transition-delay: 200ms;
+}
+@media only screen and (max-width: 1199.98px) {
+  .company-org__head {
+    margin-bottom: 48px;
+  }
 }
 @media only screen and (max-width: 991.98px) {
   .company-org__head {
@@ -18566,7 +18628,7 @@ b {
      -moz-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  width: 124px;
+  min-width: 124px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -moz-inline-box;
