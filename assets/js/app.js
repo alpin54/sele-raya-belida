@@ -17077,6 +17077,17 @@ var Header = function () {
         }
       }
     });
+
+    // Tambahkan event untuk .header__subnav__link di mobile
+    $('.header').on('click', '.header__subnav__link', function (e) {
+      if ($(window).width() < 1200) {
+        // Close subnav
+        handleDestroySubMenu();
+        // Show nav utama
+        $('body').removeClass('show--nav');
+        _Scrolllable["default"].enable();
+      }
+    });
   };
 
   // - handleDestroySubMenu
